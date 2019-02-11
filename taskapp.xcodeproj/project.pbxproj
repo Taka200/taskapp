@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B0BD796220EFC8900D9971D /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0BD795220EFC8900D9971D /* InputViewController.swift */; };
+		3B14E963220F933E00FE8A0B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B14E962220F933E00FE8A0B /* Task.swift */; };
 		3B89C714220E66F30052A111 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89C713220E66F30052A111 /* AppDelegate.swift */; };
 		3B89C716220E66F30052A111 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89C715220E66F30052A111 /* ViewController.swift */; };
 		3B89C719220E66F30052A111 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B89C717220E66F30052A111 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		199DAD3882C4AD1C4DBB824A /* Pods-taskapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-taskapp/Pods-taskapp.debug.xcconfig"; sourceTree = "<group>"; };
 		3B0BD795220EFC8900D9971D /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		3B14E962220F933E00FE8A0B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3B89C710220E66F30052A111 /* taskapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B89C713220E66F30052A111 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B89C715220E66F30052A111 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 		3B89C707220E66F30052A111 = {
 			isa = PBXGroup;
 			children = (
+				3B14E962220F933E00FE8A0B /* Task.swift */,
 				3B89C712220E66F30052A111 /* taskapp */,
 				3B89C711220E66F30052A111 /* Products */,
 				9664A3D51AE9246CF3115C9E /* Pods */,
@@ -121,7 +124,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = Taka200;
+				ORGANIZATIONNAME = Taka;
 				TargetAttributes = {
 					3B89C70F220E66F30052A111 = {
 						CreatedOnToolsVersion = 10.1;
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B14E963220F933E00FE8A0B /* Task.swift in Sources */,
 				3B0BD796220EFC8900D9971D /* InputViewController.swift in Sources */,
 				3B89C716220E66F30052A111 /* ViewController.swift in Sources */,
 				3B89C714220E66F30052A111 /* AppDelegate.swift in Sources */,
