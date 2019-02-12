@@ -2,6 +2,9 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
+/*LP1: クラスの承継:UIViewControllerなどのアップル標準のクラスを承継するクラスViewControllerを作成。ViewControllerはUIViewControllerのサブクラス。UIViewControllerはViewControllerのスーパークラス。super.でスーパークラスのプロパティーやメソッドを呼び出す。self.はクラス内でのプロパティーか一時的な変数化を区別するために使う。例えば、self.nameはクラスのプロパティーを示し、nameは一時的な変数を示す。*/
+
+/*LP2: オプショナル型(?!): 変数にnilが入る可能性がある時に使う。 var a: Int? = 10と定義した時にはprint(a!+1)の様に変数に!をつけないとエラーとなる。 var a: Int! = 10 と定義した場合は普通にprint(a+1)の様に変数を呼び出せる。*/
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -25,18 +28,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     // 各セルの内容を返すメソッド
-    func tableView(_ tableView: UITableView, cellForRowAt IndexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //再利用可能なセルを得る
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let.task = taskArray[indexPath.row]
+        let task = taskArray[indexPath.row]
         cell.textLabel?.text = task.title
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         
-        let dateString.String = formatter.string(from: task.date)
-        cell.detailTextLabel?/text = dateString
+        let dateString:String = formatter.string(from: task.date)
+        cell.detailTextLabel?.text = dateString
         
         return cell
     }
