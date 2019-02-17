@@ -5,12 +5,14 @@ import UserNotifications
 /*LP1: クラスの承継:UIViewControllerなどのアップル標準のクラスを承継するクラスViewControllerを作成。ViewControllerはUIViewControllerのサブクラス。UIViewControllerはViewControllerのスーパークラス。super.でスーパークラスのプロパティーやメソッドを呼び出す。self.はクラス内でのプロパティーか一時的な変数化を区別するために使う。例えば、self.nameはクラスのプロパティーを示し、nameは一時的な変数を示す。*/
 
 /*LP2: オプショナル型(?!): 変数にnilが入る可能性がある時に使う。 var a: Int? = 10と定義した時にはprint(a!+1)の様に変数に!をつけないとエラーとなる。 var a: Int! = 10 と定義した場合は普通にprint(a+1)の様に変数を呼び出せる。*/
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var SearchBar: UISearchBar!
     
+    //Realmインスタンスを取得
     let realm = try! Realm()
-    
+    //DB内のタスクが格納されるリスト：日付順でソート
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
     
     
@@ -19,6 +21,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
+        SearchBar.delegate = self
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
+            tableView.reloadData()
+        } else {
+        var kensaku = "category = '" + searchBar.text! + "'"
+        var categorysearch = realm.objects(Task.self).filter (kensaku)
+        taskArray = categorysearch
+        print(taskArray)
+        tableView.reloadData()
+        }
     }
 
     // MARK: UITableViewのDataSourceプロトコルのメソッド
@@ -39,7 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         
         let dateString:String = formatter.string(from: task.date)
-        cell.detailTextLabel?.text = dateString
+        cell.detailTextLabel?.text = task.category + " / " + dateString
         
         return cell
     }

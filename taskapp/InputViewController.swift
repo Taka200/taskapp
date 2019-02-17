@@ -4,6 +4,7 @@ import UserNotifications
 
 class InputViewController: UIViewController {
     
+    @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -18,6 +19,7 @@ class InputViewController: UIViewController {
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
+        categoryTextField.text = task.category
         titleTextField.text = task.title
         contentsTextView.text = task.contents
         datePicker.date = task.date
@@ -29,6 +31,7 @@ class InputViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         try! realm.write {
+            self.task.category = self.categoryTextField.text!
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextView.text
             self.task.date = self.datePicker.date
@@ -43,6 +46,12 @@ class InputViewController: UIViewController {
     //タスクのローカル通知を登録
     func setNotification(task: Task) {
         let content = UNMutableNotificationContent()
+        
+        if task.category == "" {
+            content.title = "(カテゴリーなし)"
+        } else {
+            content.title = task.title
+        }
         
         if task.title == "" {
             content.title = "(タイトルなし)"
