@@ -5,11 +5,11 @@ class Task: Object {
     @objc dynamic var id = 0
     
     //カテゴリー
-    @objc dynamic var category = ""
+    @objc dynamic var category: Category?
     
     //タイトル
     @objc dynamic var title = ""
-    
+
     //内容
     @objc dynamic var contents = ""
     
