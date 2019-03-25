@@ -205,10 +205,10 @@
             </objects>
             <point key="canvasLocation" x="1631.2" y="24.7376311844078"/>
         </scene>
-        <!--View Controller-->
+        <!--Category View Controller-->
         <scene sceneID="u8E-5h-J3d">
             <objects>
-                <viewController id="45W-78-5wf" sceneMemberID="viewController">
+                <viewController id="45W-78-5wf" customClass="CategoryViewController" customModule="taskapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oQk-U0-KCT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,6 +219,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="isEnableAddButton:" destination="45W-78-5wf" eventType="editingDidEnd" id="nVe-SW-YgX"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カテゴリ追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-EQ-LWl">
                                 <rect key="frame" x="135" y="51" width="104" height="21"/>
@@ -231,16 +234,26 @@
                                 <rect key="frame" x="172" y="167" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="登録"/>
+                                <connections>
+                                    <action selector="categoryToroku:" destination="45W-78-5wf" eventType="touchUpInside" id="Qy1-Ts-1ZY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GD0-H5-8G6">
                                 <rect key="frame" x="148" y="234" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="キャンセル"/>
+                                <connections>
+                                    <action selector="categoryCancel:" destination="45W-78-5wf" eventType="touchUpInside" id="4eu-yp-enl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Z5V-np-ypb"/>
                     </view>
+                    <connections>
+                        <outlet property="addCategoryButton" destination="Ls0-Fz-1Tf" id="fzr-qt-3dT"/>
+                        <outlet property="categoryRegister" destination="jzO-8W-YwE" id="2I8-Qv-Oe7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52C-LL-F3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
