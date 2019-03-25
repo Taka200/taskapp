@@ -44,9 +44,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
             tableView.reloadData()
         } else {
-        var kensaku = "category = '" + searchBar.text! + "'"
-        var categorysearch = realm.objects(Task.self).filter (kensaku)
-        taskArray = categorysearch
+    //    var kensaku = "category = '" + searchBar.text! + "'"
+    //    var categorysearch = realm.objects(Task.self).filter (kensaku)
+    //    taskArray = categorysearch
+            let kensakuMojiretu = "'" + searchBar.text! + "'"
+            let predicate = NSPredicate(format: "category.name = %@", kensakuMojiretu)
+            
+        taskArray = try! Realm().objects(Task.self).filter(predicate).sorted(byKeyPath: "date", ascending: false)
+            
         print(taskArray)
         tableView.reloadData()
         }

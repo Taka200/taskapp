@@ -35,16 +35,20 @@ class InputViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        try! realm.write {
-            self.task.category = selectedCategory
-            self.task.title = self.titleTextField.text!
-            self.task.contents = self.contentsTextView.text
-            self.task.date = self.datePicker.date
-            self.realm.add(self.task, update: true)
+        // 画面戻る時でかつタイトルが入力されているときのみ登録
+        if isMovingFromParent && self.titleTextField.text != "" {
+       
+        // 画面から離れる時に保存
+            try! realm.write {
+                self.task.category = selectedCategory
+                self.task.title = self.titleTextField.text!
+                self.task.contents = self.contentsTextView.text
+                self.task.date = self.datePicker.date
+                self.realm.add(self.task, update: true)
+            }
+        
+            setNotification(task: task)
         }
-        
-        setNotification(task: task)
-        
         super.viewWillDisappear(animated)
     }
     
