@@ -216,7 +216,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="isEnableAddButton:" destination="45W-78-5wf" eventType="editingDidEnd" id="nVe-SW-YgX"/>
+                                    <action selector="isEnableAddButton:" destination="45W-78-5wf" eventType="editingChanged" id="Ovc-qw-wDN"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カテゴリ追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-EQ-LWl">
