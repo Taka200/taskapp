@@ -2,7 +2,15 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class InputViewController: UIViewController {
+class InputViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoryArray.count + 1
+    }
+    
     
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
@@ -28,6 +36,12 @@ class InputViewController: UIViewController {
         titleTextField.text = task.title
         contentsTextView.text = task.contents
         datePicker.date = task.date
+        
+        //カテゴリー一覧のpicker作成
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        categoryPicker.showsSelectionIndicator = true
+        categoryTextField.inputView = categoryPicker
     }
     
     @objc func dismissKeyboard() {
@@ -51,6 +65,29 @@ class InputViewController: UIViewController {
         }
         super.viewWillDisappear(animated)
     }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if row == 0 {
+            return "(設定なし)"
+        } else {
+            return categoryArray[row - 1].name
+        }
+    }
+    
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            categoryTextField.endEditing(true)
+            
+            let row = categoryPicker.selectedRow(inComponent: 0)
+            if row == 0 {
+                selectedCategory = nil
+                categoryTextField.text = "(設定なし)"
+            } else {
+                selectedCategory = categoryArray[row - 1]
+                categoryTextField.text = selectedCategory!.name
+            }
+            
+        }
+    
     
     //タスクのローカル通知を登録
     func setNotification(task: Task) {
